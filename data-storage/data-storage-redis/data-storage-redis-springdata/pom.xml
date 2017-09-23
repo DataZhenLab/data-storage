@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<project
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+	xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.datazhen.lab</groupId>
+		<artifactId>data-storage-redis</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
+	<groupId>com.datazhen.lab</groupId>
+	<artifactId>data-storage-redis-springdata</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>war</packaging>
+	<name>data-storage-redis-springdata Maven Webapp</name>
+	<url>http://maven.apache.org</url>
+	
+	<properties>
+		<spring.data.version>1.8.7.RELEASE</spring.data.version>
+	</properties>
+	
+	<dependencies>
+		 <dependency>
+	        <groupId>org.springframework.data</groupId>
+	        <artifactId>spring-data-redis</artifactId>
+	        <version>${spring.data.version}</version>
+	    </dependency>
+	</dependencies>
+	<build>
+		<finalName>data-storage-redis-springdata</finalName>
+	</build>
+</project>

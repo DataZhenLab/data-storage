@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<Configuration status="WARN">  
+	<properties>  
+        <property name="LOG_HOME">E:\log</property> 
+        <property name="LEVEL">debug</property>
+        <property name="OUT">console</property>
+        <property name="FILE_NAME">lab-storage-redis-jedis</property>
+    </properties> 
+    <Appenders>  
+        <Console name="console" target="SYSTEM_OUT">  
+            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %-5level %logger{36} - %message%n" />  
+        </Console>  
+        <RollingFile name="file" fileName="${LOG_HOME}/${FILE_NAME}.log"  
+                                 filePattern="${LOG_HOME}/${FILE_NAME}.%d{yyyy-MM-dd}.log" append="true">  
+            <Filters>  
+                <ThresholdFilter level="${LEVEL}" onMatch="ACCEPT" onMismatch="DENY"/>  
+            </Filters>  
+            	<PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss.SSS}[%t][%level][%class][%line]:%message%n"/>  
+            <Policies>  
+                <TimeBasedTriggeringPolicy interval="1" modulate="true"/>
+            </Policies>  
+        </RollingFile>
+    </Appenders>  
+    
+    <Loggers>  
+     	<!-- 第三方的软件日志级别 -->  
+       <logger name="org.springframework" level="error" additivity="true">  
+            <AppenderRef ref="${OUT}"/>  
+        </logger>  
+     	<!-- 第三方的软件日志级别 -->  
+       <logger name="org.apache.logging" level="error" additivity="true">  
+            <AppenderRef ref="${OUT}"/>  
+        </logger>  
+       <logger name="org.apache.commons" level="error" additivity="true">  
+            <AppenderRef ref="${OUT}"/>  
+        </logger>  
+   
+        <Root level="${LEVEL}" includeLocation="true">  
+            <AppenderRef ref="${OUT}" />  
+        </Root>  
+    </Loggers>  
+</Configuration>  
